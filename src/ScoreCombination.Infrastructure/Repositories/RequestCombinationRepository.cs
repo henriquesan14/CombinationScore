@@ -5,7 +5,7 @@ using ScoreCombination.Core.Repositories;
 
 namespace ScoreCombination.Infrastructure.Repositories
 {
-    public class RequestCombinationRepository : BaseRepository<RequestCombination>, IRequestCombinationRepository
+    public class RequestCombinationRepository : BaseRepository<Core.Entities.ScoreCombinationEntity>, IRequestCombinationRepository
     {
         public RequestCombinationRepository(ScoreCombinationContext context) : base(context)
         {

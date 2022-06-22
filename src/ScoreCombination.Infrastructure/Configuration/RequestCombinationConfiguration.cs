@@ -6,7 +6,7 @@ namespace Confitec.Infrastructure.Configurations
 {
     public class RequestCombinationConfigurations
     {
-        public void Configure(EntityTypeBuilder<RequestCombination> builder)
+        public void Configure(EntityTypeBuilder<ScoreCombination.Core.Entities.ScoreCombinationEntity> builder)
         {
             builder
                 .HasKey(p => p.Id);

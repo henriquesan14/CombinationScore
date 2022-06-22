@@ -3,7 +3,7 @@ using ScoreCombination.Core.Entities;
 
 namespace ScoreCombination.Core.Repositories
 {
-    public interface IRequestCombinationRepository : IBaseRepository<RequestCombination>
+    public interface IRequestCombinationRepository : IBaseRepository<Entities.ScoreCombinationEntity>
     {
 
     }

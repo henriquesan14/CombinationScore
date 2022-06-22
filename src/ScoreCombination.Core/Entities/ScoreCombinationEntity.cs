@@ -2,8 +2,10 @@
 
 namespace ScoreCombination.Core.Entities
 {
-    public class RequestCombination : Entity
+    public class ScoreCombinationEntity : Entity
     {
         public string Request { get; set; }
+
+        public string Response { get; set; }
     }
 }

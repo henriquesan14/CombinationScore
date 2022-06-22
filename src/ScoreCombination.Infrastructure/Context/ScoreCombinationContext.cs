@@ -9,7 +9,7 @@ namespace Confitec.Infrastructure.Context
         public ScoreCombinationContext(DbContextOptions<ScoreCombinationContext> options) : base(options)
         {
         }
-        public DbSet<RequestCombination> RequestsCombinations { get; set; }
+        public DbSet<ScoreCombination.Core.Entities.ScoreCombinationEntity> ScoresCombinations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

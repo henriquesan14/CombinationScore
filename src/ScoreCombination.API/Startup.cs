@@ -1,20 +1,21 @@
+using Confitec.Infrastructure.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ScoreCombination.API.GraphQL.Queries;
+using ScoreCombination.Application.Services;
+using ScoreCombination.Core.Repositories;
+using ScoreCombination.Core.Services;
+using ScoreCombination.Infrastructure.Repositories;
 
 namespace ScoreCombination.API
 {
     public class Startup
     {
+        private readonly string AllowedOrigin = "allowedOrigin";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,6 +26,21 @@ namespace ScoreCombination.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("DbConnection");
+            services.AddDbContext<ScoreCombinationContext>(options => options.UseSqlServer(connectionString));
+
+            services.AddScoped<IRequestCombinationRepository, RequestCombinationRepository>();
+            services.AddScoped<IRequestCombinationService, RequestCombinationService>();
+
+            
+
+            services.AddGraphQLServer()
+                .AddQueryType<RequestCombinationQuery>();
+
+            services.AddCors(option =>
+            {
+                option.AddPolicy(AllowedOrigin, builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
             services.AddControllers();
         }
 
@@ -36,7 +52,12 @@ namespace ScoreCombination.API
                 app.UseDeveloperExceptionPage();
             }
 
+
             app.UseHttpsRedirection();
+
+            app.UseCors(AllowedOrigin);
+
+            app.UseWebSockets();
 
             app.UseRouting();
 
@@ -44,6 +65,7 @@ namespace ScoreCombination.API
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapGraphQL();
                 endpoints.MapControllers();
             });
         }
