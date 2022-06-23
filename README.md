@@ -47,7 +47,7 @@ $ dotnet run
 # A API iniciará na porta:5000 com HTTP e na porta:5001 com HTTPS - acesse <http://localhost:5001>
 ```
 
-### : 🌎 Realizando chamadas no GraphQL
+### 🌎 Realizando chamadas no GraphQL
 
 #### Exemplo para buscar uma combinação possivel
 
