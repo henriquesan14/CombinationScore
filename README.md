@@ -10,6 +10,7 @@
 As seguintes ferramentas foram usadas na construção do projeto:
 - [.NET](https://dotnet.microsoft.com/en-us/) 
 - [GraphQL](https://graphql.org/)
+- [HotChocolate](https://chillicream.com/docs/hotchocolate)
 - [SQLServer](https://www.microsoft.com/pt-br/sql-server/sql-server-2019)
 
 ### 🛠 Padrões Utilizados
