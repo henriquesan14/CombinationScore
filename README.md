@@ -47,6 +47,32 @@ $ dotnet run
 # A API iniciará na porta:5000 com HTTP e na porta:5001 com HTTPS - acesse <http://localhost:5001>
 ```
 
+### : 🌎 Realizando chamadas no GraphQL
+
+#### Exemplo para buscar uma combinação possivel
+
+```json
+    query{
+        combination(combination: {sequence: [5, 20, 2, 1], target: 47}) {
+            hasCombination,
+            combination
+        }
+    }
+```
+
+#### Exemplo para buscar histórico de pesquisas com filtro de datas
+
+```json
+    query{
+        requestsCombinations (filter: {dateInitial:"2022-06-01", dateFinal: "2022-06-25"}) {
+            request,
+            response,
+            createdAt
+        }
+    }
+```
+
+
 
 ### Autor
 ---
