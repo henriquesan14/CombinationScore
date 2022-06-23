@@ -16,9 +16,5 @@
     <ProjectReference Include="..\ScoreCombination.Application\ScoreCombination.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 
 </Project>
